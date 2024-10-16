@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package unit.common;
+option java_package="com.example.pb.unit.common";
+option java_multiple_files=true;
+
+message ReturnMsg {
+  string message = 1;
+  int32 code = 2;
+}
