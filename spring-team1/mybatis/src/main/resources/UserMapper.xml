@@ -1,0 +1,24 @@
+
+<mapper namespace="com.example.mybatis.mapper.UserMapper">
+    <resultMap id="userResultMap" type="com.example.mybatis.domain.User">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="email" column="email" />
+    </resultMap>
+
+    <select id="findById" resultMap="userResultMap">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+    <select id="findAllUsers" resultMap="userResultMap">
+        SELECT * FROM users
+    </select>
+    <insert id="signUpAccount"  parameterType="com.example.mybat)is.domain.User">
+        INSERT INTO users(name, email) VALUES (#{name}, #{email})
+    </insert>
+    <update id="updateUserInfo">
+        UPDATE users SET name = #{name}, email = #{email} WHERE id = #{id}
+    </update>
+    <delete id="accountWithdrawal" parameterType="long">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
+</mapper>
