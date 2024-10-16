@@ -3,7 +3,13 @@ spring:
     name: grpc-server
   main:
     web-application-type: none
+  h2:
+    console:
+      enabled: true
 
 grpc:
   server:
     port: 9090
+
+mybatis:
+  type-aliases-package: com.example.grpc_server.domain

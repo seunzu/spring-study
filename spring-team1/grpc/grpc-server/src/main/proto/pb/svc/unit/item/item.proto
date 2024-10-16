@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package pb.svc.item;
+option java_package = "com.example.pb.unit.item";
+option java_multiple_files = true;
+
+import "pb/svc/unit/common/msg.proto";
+
+service ItemService {
+  rpc CreateItem(CreateItemReq) returns (CreateItemRes);
+  rpc ReadItem(ReadItemReq) returns (ReadItemRes);
+  rpc UpdateItem(UpdateItemReq) returns (UpdateItemRes);
+  rpc DeleteItem(DeleteItemReq) returns (DeleteItemRes);
+}
+
+message CreateItemReq {
+  string name = 1;
+  string description = 2;
+}
+
+message CreateItemRes {
+  string id = 1;
+  unit.common.ReturnMsg result = 2;
+}
+
+message ReadItemReq {
+  string id = 1;
+}
+
+message ReadItemRes {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  unit.common.ReturnMsg result = 4;
+}
+
+message UpdateItemReq {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message UpdateItemRes {
+  unit.common.ReturnMsg result = 1;
+}
+
+message DeleteItemReq {
+  string id = 1;
+}
+
+message DeleteItemRes {
+  unit.common.ReturnMsg result = 1;
+}

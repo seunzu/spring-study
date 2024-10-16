@@ -1,5 +1,6 @@
-package com.example.grpcclient;
+package com.example.grpcclient.controller;
 
+import com.example.grpcclient.service.TestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

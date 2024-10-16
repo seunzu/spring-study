@@ -40,12 +40,17 @@ dependencies {
 
 	// gRPC 관련 의존성
 	implementation "com.google.protobuf:protobuf-java-util:3.25.1"
-	implementation 'com.google.protobuf:protobuf-java:3.25.1'
+	implementation 'com.google.protobuf:protobuf-java:4.28.2'
 	implementation 'net.devh:grpc-server-spring-boot-starter:2.15.0.RELEASE'
 	runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
 	implementation "io.grpc:grpc-protobuf:${grpcVersion}"
 	implementation "io.grpc:grpc-stub:${grpcVersion}"
 	compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
+
+	// MyBatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+	// H2
+	implementation 'com.h2database:h2:2.2.220'
 }
 
 //tasks.named('test') {

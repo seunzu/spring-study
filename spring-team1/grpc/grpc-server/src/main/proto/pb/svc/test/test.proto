@@ -4,7 +4,7 @@ package pb.svc.test;
 option java_package="com.example.pb.svc.test";
 option java_multiple_files=true;
 
-import "pb/unit/common/msg.proto";
+import "pb/svc/unit/common/msg.proto";
 
 service Test {
   rpc Greeting(GreetingReq) returns (GreetingRes);
