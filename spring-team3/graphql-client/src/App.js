@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   const [mode, setMode] = useState("get");
   const [fields, setFields] = useState(["id"]);
-  const { loading, error, data } = useGetAllUsersApi(fields);
+  const { data } = useGetAllUsersApi(fields);
 
   const onChangeMode = (e) => setMode(e.target.value);
 
@@ -57,6 +57,18 @@ function App() {
               <input type="checkbox" value="email" onChange={onToggleColumn} />
               email
             </label>
+            <label>
+              <input type="checkbox" value="hobby" onChange={onToggleColumn} />
+              hobby
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="favoriteColor"
+                onChange={onToggleColumn}
+              />
+              favoriteColor
+            </label>
           </fieldset>
         </div>
         <ul id="user-card-list">
@@ -66,6 +78,8 @@ function App() {
                 <p>id: {d.id}</p>
                 <p>name: {d.name}</p>
                 <p>email: {d.email}</p>
+                <p>hobby: {d.hobby}</p>
+                <p>favoriteColor: {d.favoriteColor}</p>
               </div>
             );
           })}

@@ -23,17 +23,21 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public User createUser(String name, String email) {
+    public User createUser(String name, String email, String hobby, String favoriteColor) {
         User user = new User();
         user.setName(name);
         user.setEmail(email);
+        user.setHobby(hobby);
+        user.setFavoriteColor(favoriteColor);
         return userRepository.save(user);
     }
 
-    public User updateUser(Long id, String name, String email) {
+    public User updateUser(Long id, String name, String email, String hobby, String favoriteColor) {
         User user = userRepository.findById(id).orElseThrow();
-        user.setName(name);
-        user.setEmail(email);
+        if (name != null) user.setName(name);
+        if (email != null) user.setEmail(email);
+        if (hobby != null) user.setHobby(hobby);
+        if (favoriteColor != null) user.setFavoriteColor(favoriteColor);
         return userRepository.save(user);
     }
 

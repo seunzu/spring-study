@@ -6,6 +6,8 @@ import useUpdateUserApi from "../api/useUpdateUserApi";
 const RequestForm = ({ mode }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [hobby, setHobby] = useState("");
+  const [favoriteColor, setFavoriteColor] = useState("");
   const [userId, setUserId] = useState();
 
   const [postUser] = usePostUserApi();
@@ -37,9 +39,23 @@ const RequestForm = ({ mode }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          <input
+            type="text"
+            placeholder="hobby"
+            value={hobby}
+            onChange={(e) => setHobby(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="favoriteColor"
+            value={favoriteColor}
+            onChange={(e) => setFavoriteColor(e.target.value)}
+          />
           <button
             type="submit"
-            onClick={() => postUser({ variables: { name, email } })}
+            onClick={() =>
+              postUser({ variables: { name, email, hobby, favoriteColor } })
+            }
           >
             전송
           </button>
@@ -82,10 +98,24 @@ const RequestForm = ({ mode }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          <input
+            type="text"
+            placeholder="hobby"
+            value={hobby}
+            onChange={(e) => setHobby(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="favoriteColor"
+            value={favoriteColor}
+            onChange={(e) => setFavoriteColor(e.target.value)}
+          />
           <button
             type="submit"
             onClick={(e) =>
-              updateUser({ variables: { id: userId, name, email } })
+              updateUser({
+                variables: { id: userId, name, email, hobby, favoriteColor },
+              })
             }
           >
             전송

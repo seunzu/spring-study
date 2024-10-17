@@ -29,13 +29,13 @@ public class UserGraphQL {
     }
 
     @MutationMapping
-    public User createUser(@Argument String name, @Argument String email) {
-        return userService.createUser(name, email);
+    public User createUser(@Argument String name, @Argument String email, @Argument String hobby, @Argument String favoriteColor) {
+        return userService.createUser(name, email, hobby, favoriteColor);
     }
 
     @MutationMapping
-    public User updateUser(@Argument Long id, @Argument String name, @Argument String email) {
-        return userService.updateUser(id, name, email);
+    public User updateUser(@Argument Long id, @Argument String name, @Argument String email, @Argument String hobby, @Argument String favoriteColor) {
+        return userService.updateUser(id, name, email, hobby, favoriteColor);
     }
 
     @MutationMapping
