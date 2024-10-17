@@ -1,5 +1,6 @@
 package com.example.grpcclient.controller;
 
+import com.example.grpcclient.dto.*;
 import com.example.grpcclient.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,22 +13,22 @@ public class ItemController {
     private final ItemService itemService;
 
     @PostMapping
-    public String createItem(@RequestParam String name, @RequestParam String description) {
-        return itemService.createItem(name, description);
+    public ItemResponse createItem(@RequestBody ItemRequest request) {
+        return itemService.createItem(request.name(), request.description());
     }
 
     @GetMapping("/{itemId}")
-    public String readItem(@PathVariable String itemId) {
+    public ItemResponse readItem(@PathVariable String itemId) {
         return itemService.readItem(itemId);
     }
 
     @PutMapping("/{itemId}")
-    public String updateItem(@PathVariable String itemId, @RequestParam String name, @RequestParam String description) {
-        return itemService.updateItem(itemId, name, description);
+    public ItemResponse updateItem(@PathVariable String itemId, @RequestBody ItemRequest request) {
+        return itemService.updateItem(itemId, request.name(), request.description());
     }
 
     @DeleteMapping("/{itemId}")
-    public String deleteItem(@PathVariable String itemId) {
-        return itemService.deleteItem(itemId);
+    public void deleteItem(@PathVariable String itemId) {
+       itemService.deleteItem(itemId);
     }
 }
