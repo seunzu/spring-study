@@ -9,18 +9,19 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    @Select("SELECT * FROM users WHERE id = #{id}")
+//    @Select("SELECT * FROM users WHERE id = #{id}")
     User findById(Long id);
 
-    @Select("SELECT * FROM users")
+//    @Select("SELECT * FROM users")
     List<UserResponse> findAllUsers();
 
-    @Insert("INSERT INTO users(name, email) VALUES ( #{name}, #{email})")
+//    @Insert("INSERT INTO users(name, email) VALUES ( #{name}, #{email})")
     void signUpAccount(User user);
 
-    @Update("UPDATE users SET name = #{name}, email = #{email} WHERE id = #{id}")
+//    @Update("UPDATE users SET name = #{name}, email = #{email} WHERE id = #{id}")
     void updateUserInfo(User user);
 
-    @Delete("DELETE FROM users WHERE id = #{id}")
+//    @Delete("DELETE FROM users WHERE id = #{id}")
     void accountWithdrawal(Long id);
+    List<UserResponse> findByNameOrEmail(@Param("name") String name, @Param("email") String email);
 }

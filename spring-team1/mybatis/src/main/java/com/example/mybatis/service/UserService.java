@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -38,4 +39,12 @@ public class UserService {
         userMapper.accountWithdrawal(id);
         return "Ok";
     }
+
+    public List<UserResponse> searchUserByNameOrEmail(String name, String email) {
+        List<UserResponse> users = userMapper.findByNameOrEmail(name, email);
+        return users.stream()
+                .map(user -> new UserResponse(user.id(), user.name(), user.email()))
+                .collect(Collectors.toList());
+    }
+    //이렇게 짜면 그냥 setter로 짠거랑 같나요? 안하는게 좋나요?
 }

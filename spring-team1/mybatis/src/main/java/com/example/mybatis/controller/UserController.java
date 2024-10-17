@@ -1,6 +1,5 @@
 package com.example.mybatis.controller;
 
-import com.example.mybatis.domain.User;
 import com.example.mybatis.request.UserRequest;
 import com.example.mybatis.response.UserResponse;
 import com.example.mybatis.service.UserService;
@@ -38,6 +37,14 @@ public class UserController {
     @DeleteMapping("/sign-out/{id}")
     public void accountWithdrawal(@PathVariable Long id){
         userService.accountWithdrawal(id);
+    }
+
+    @GetMapping("/search")
+    public List<UserResponse> findByNameOrEmail(
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "email", required = false) String email
+    ){
+        return userService.searchUserByNameOrEmail(name,email);
     }
 
 }
