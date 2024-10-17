@@ -6,10 +6,19 @@ spring:
   h2:
     console:
       enabled: true
+  datasource:
+    url: jdbc:h2:mem:grpcdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  sql:
+    init:
+      mode: always
 
 grpc:
   server:
     port: 9090
+
 
 mybatis:
   type-aliases-package: com.example.grpc_server.domain
