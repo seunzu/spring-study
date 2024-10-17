@@ -1,0 +1,10 @@
+"""쇼 목록 쿼리, 선택적으로 제목 필터링"""
+
+type Query {
+    shows(titleFilter: String): [Show]
+}
+
+type Show {
+    title: String
+    releaseYear: Int
+}
