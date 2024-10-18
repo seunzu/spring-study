@@ -14,7 +14,7 @@ public class ItemController {
 
     @PostMapping
     public ItemResponse createItem(@RequestBody ItemRequest request) {
-        return itemService.createItem(request.name(), request.description());
+        return itemService.createItem(request);
     }
 
     @GetMapping("/{itemId}")
@@ -24,7 +24,7 @@ public class ItemController {
 
     @PutMapping("/{itemId}")
     public ItemResponse updateItem(@PathVariable String itemId, @RequestBody ItemRequest request) {
-        return itemService.updateItem(itemId, request.name(), request.description());
+        return itemService.updateItem(itemId, request);
     }
 
     @DeleteMapping("/{itemId}")
