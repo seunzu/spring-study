@@ -41,15 +41,13 @@ public class UserController {
     @GetMapping
     public ResponseEntity<CollectionModel<EntityModel<User>>> getAllUsers() {
         List<EntityModel<User>> users = userRepository.findAll().stream()
-                .map(user -> EntityModel.of(user,
-                        linkTo(methodOn(UserController.class).getAllUsers()).withRel("users")))
-
+                .map(user -> assembler.toModel(user))
                 .collect(Collectors.toList());
-
 
         return ResponseEntity.ok(CollectionModel.of(users,
                 linkTo(methodOn(UserController.class).getAllUsers()).withSelfRel()));
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<EntityModel<User>> getUser(@PathVariable Long id) {
         User user = userRepository.findById(id)
